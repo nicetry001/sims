@@ -1,0 +1,62 @@
+# Ignore system files
+.DS_Store  # macOS system file
+Thumbs.db  # Windows system file
+.idea/  # IntelliJ IDE configuration
+.vscode/  # Visual Studio Code configuration
+*.swp  # Vim swap files
+*.bak  # Backup files
+*.tmp  # Temporary files
+*.lock  # Lock files
+
+# Ignore sensitive configuration files
+*.env  # Environment variables
+config/  # Generic configuration folder
+keys/  # Generic keys folder
+secrets/  # Generic secrets folder
+auth.json  # JSON-based authentication info
+
+# Ignore sensitive keys and certificate files
+*.key  # SSH, TLS/SSL keys
+*.crt  # SSL/TLS certificates
+*.pem  # PEM format (can contain certificates, private keys, or other sensitive data)
+*.pfx  # PKCS#12 certificate bundle
+*.p12  # Another PKCS#12 certificate bundle
+*.jks  # Java KeyStore
+*.pkcs12  # General PKCS#12 file format
+*.asc  # PGP key (ASCII-armored)
+*.pgp  # PGP key
+*.gpg  # GnuPG key
+*.spk  # Apple provisioning profile key
+*.csr  # Certificate signing request
+*.der  # DER-encoded certificate or key
+*.p7b  # PKCS#7 certificate chain
+*.p7s  # PKCS#7 signature
+*.bks  # BouncyCastle keystore
+*.rsa  # RSA private key
+*.pass  # Password files
+*.secrets  # Generic secret storage
+
+# Ignore build/output directories
+build/
+dist/
+node_modules/
+target/
+coverage/
+out/
+*.pyc
+__pycache__/
+*.o
+*.class
+*.jar
+*.war
+*.ear
+
+# Ignore logs and debug information
+*.log  # Log files
+*.trace  # Trace files
+*.pid  # Process ID files
+*.out  # Output files
+*.err  # Error files
+
+# Ignore OS-specific cache and temp files
+~*
