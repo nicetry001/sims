@@ -97,6 +97,18 @@ body {
   #product-id {
     background-color: #e0e0e0;  /* Light gray background to indicate read-only */
     color: #a0a0a0;  /* Gray text to match the read-only style */
-    border: 1px solid #d0d0d0;  /* Border color to maintain a clean look */
+    border: 1px solid #f18e8e;  /* Border color to maintain a clean look */
     cursor: not-allowed;  /* Change cursor to indicate read-only state */
   }
+
+  #created-at {
+    background-color: #e0e0e0;  /* Light gray background to indicate read-only */
+    color: #a0a0a0;  /* Gray text to match the read-only style */
+    border: 1px solid #f18e8e;  /* Border color to maintain a clean look */
+    cursor: not-allowed;  /* Change cursor to indicate read-only state */
+  }
+
+  .button-container {
+    text-align: center; /* This centers the buttons horizontally */
+    margin-top: 20px;  /* Optional: adds some space above the buttons */
+}

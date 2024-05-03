@@ -16,8 +16,10 @@
     <form id="product-form" onsubmit="handleProductSubmit(event)">
        <!-- Hidden field for product ID -->
       <div class="form-group">
-        <label for="product-name">Product ID: </label>
-        <input type="text" id="product-id" readonly>
+        <input type="hidden" id="product-id" readonly>
+      </div>
+      <div class="form-group">
+        <input type="hidden" id="created-at" readonly>
       </div>
       <!-- Grouped form fields with fixed-width labels and smaller text boxes -->
       <div class="form-group">
@@ -36,18 +38,37 @@
         <label for="product-stock">Stock:</label>
         <input type="number" id="product-stock" required>
       </div>
-
       <!-- Save Product button and notification area -->
       <div class="form-group">
-        <button type="submit">Save Product</button>
+        <button type="submit">Save Product</button> 
         <span id="notification"></span> <!-- Notification area for error/success messages -->
       </div>
     </form>
+  </section>
+  <section>
+    <h2>Bulk Upload(CSV File Only)</h2>
+    <button onclick="uploadCSV()">Upload CSV</button> <!-- Button to trigger bulk upload -->
+    <input type="file" id="csv-file" accept=".csv"> <!-- File input for CSV upload --> <!-- Only accept CSV files -->
+  </section>
+  <section>
+    <h2>Search Products</h2>
+    <input type="text" id="search-input" placeholder="Search products...">  <!-- Search box -->
+    <input type="number" id="min-price" placeholder="Min price">  <!-- Price range filter -->
+    <input type="number" id="max-price" placeholder="Max price">
+    
+    <button onclick="applyFilters()">Apply Filters</button>  <!-- Apply filters -->
+        <button onclick="clearFilters()">Clear Filters</button>  <!-- Clear filters -->
+
   </section>
 
   <section>
     <h2>Product List</h2>
     <table id="product-list">
+      <div class="button-container">
+        <button id="prev-page" onclick="loadPreviousPage()">Previous Page</button>
+        <button id="next-page" onclick="loadNextPage()">Next Page</button>
+      </div>
+
       <thead>
         <tr>
           <th>Name</th>
@@ -58,11 +79,14 @@
         </tr>
       </thead>
       <tbody>
+        
         <!-- Product rows will be dynamically inserted here -->
       </tbody>
     </table>
+
   </section>
 
   <script src="scripts.js"></script> <!-- JavaScript code for CRUD operations -->
+  
 </body>
 </html>
