@@ -75,19 +75,6 @@ async function createProduct(product) {
   return response.ok; // Returns true if successful, false otherwise
 }
 
-// Function to update an existing product
-// async function updateProduct(productId, product) {
-//   const response = await fetch(`${apiUrl}/products/${productId}`, {
-//     method: "PUT",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(product),
-//   });
-
-//   return response.ok; // Returns true if successful, false otherwise
-// }
-
 // Function to update an existing product with productId included in the body
 async function updateProduct(productId, product) {
     // Include productId in the product object
@@ -292,3 +279,38 @@ async function uploadCSV() {
 }
 
 
+function handleLogin(event) {
+  event.preventDefault();
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  CognitoAuth.signIn(username, password)
+    .then((user) => {
+      console.log('Login successful:', user);
+      // Redirect or update UI to reflect login status
+    })
+    .catch((error) => {
+      console.error('Login failed:', error);
+    });
+}
+
+function handleSignup(event) {
+  event.preventDefault();
+  const newUsername = document.getElementById('new-username').value;
+  const newPassword = document.getElementById('new-password').value;
+
+  CognitoAuth.signUp({
+    username: newUsername,
+    password: newPassword,
+    attributes: {
+      email: newUsername, // Assuming email as username
+    },
+  })
+    .then((data) => {
+      console.log('Signup successful:', data);
+      // Redirect to confirm sign-up or update UI
+    })
+    .catch((error) => {
+      console.error('Signup failed:', error);
+    });
+}

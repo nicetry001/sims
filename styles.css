@@ -1,114 +1,131 @@
 /* Base styles for the body */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  header {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  /* Default is dark mode */
-  .dark-mode {
-    background-color: #2e2e2e;
-    color: white;
-  }
-  
-  .light-mode {
-    background-color: white;
-    color: #2e2e2e;
-  }
-  
-  button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  form {
-    margin: 20px;
-  }
-  
-  /* Adjust alignment of form fields and control text box size */
-  .form-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .form-group label {
-    width: 100px; /* Fixed width for alignment */
-    font-weight: bold;
-  }
-  
-  .form-group input {
-    width: 200px; /* Smaller text box width */
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  /* Styling for the product list table */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  th {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .light-mode th {
-    background-color: #f2f2f2;
-    color: #2e2e2e;
-  }
-  
-  td {
-    text-align: left; /* Align text to the left */
-  }
-  
-  td button {
-    padding: 5px; /* Smaller buttons for action items */
-    border: none;
-    background-color: #f2f2f2;
-    color: #2e2e2e;
-    cursor: pointer;
-  }
-  
-  td button:hover {
-    background-color: #ddd;
-  }
-  
-  #product-id {
-    background-color: #e0e0e0;  /* Light gray background to indicate read-only */
-    color: #a0a0a0;  /* Gray text to match the read-only style */
-    border: 1px solid #f18e8e;  /* Border color to maintain a clean look */
-    cursor: not-allowed;  /* Change cursor to indicate read-only state */
-  }
+  font-family: Roboto, Lato, sans-serif; /* Professional fonts */
+  margin: 0;
+  padding: 0;
+}
 
-  #created-at {
-    background-color: #e0e0e0;  /* Light gray background to indicate read-only */
-    color: #a0a0a0;  /* Gray text to match the read-only style */
-    border: 1px solid #f18e8e;  /* Border color to maintain a clean look */
-    cursor: not-allowed;  /* Change cursor to indicate read-only state */
-  }
+button {
+  background-color: #00ADB5; /* Use the specified color scheme */
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
 
-  .button-container {
-    text-align: center; /* This centers the buttons horizontally */
-    margin-top: 20px;  /* Optional: adds some space above the buttons */
+button:hover {
+  background-color: #393E46; /* Darker on hover */
+}
+
+.main-content {
+  display: flex; /* Flex layout for sidebar and product-list */
+  margin: 10px; /* Space between sidebar and product-list */
+}
+
+.sidebar {
+  background-color: #393E46; /* Default sidebar background color */
+  color: white;
+  padding: 20px;
+  border-radius: 10px; /* Smooth edges for sidebar */
+  width: 250px; /* Fixed width to avoid overlapping */
+}
+
+.product-list {
+  flex: 1; /* Occupies the rest of the width */
+  padding: 20px;
+  margin-left: 15px; /* Space from the sidebar */
+  border-radius: 10px; /* Smooth edges for product list */
+}
+
+table {
+  width: 100%; /* Table should stretch across the entire width */
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #00ADB5; /* Header color */
+  color: white;
+}
+
+td button {
+  padding: 5px;
+  border: none;
+  background-color: #f2f2f2;
+  color: #222831;
+  cursor: pointer;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Form-group alignment */
+.form-group {
+  display: flex; /* Aligns labels and inputs */
+  align-items: center; /* Ensures vertical alignment */
+  gap: 10px; /* Space between elements */
+}
+
+.form-group label {
+  width: 100px; /* Ensure consistent label width */
+}
+
+.toggle-switch {
+  position: absolute;
+  top: 10px;
+  right: 20px; /* Upper-right corner */
+}
+
+.toggle-switch input {
+  display: none; /* Hide the original checkbox */
+}
+
+.toggle-switch label {
+  background-color: #393E46;
+  color: #EEEEEE;
+  padding: 10px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.toggle-switch input:checked + label {
+  background-color: #00ADB5; /* Change color when toggled */
+  color: #222831;
+}
+
+/* Dark mode adjustments */
+.dark-mode {
+  background-color: #222831; /* Darker shade */
+  color: #EEEEEE; /* Light text color */
+}
+
+.dark-mode .sidebar {
+  background-color: #393E46; /* Dark sidebar */
+  border-radius: 10px; /* Smooth edges */
+}
+
+.dark-mode .product-list {
+  border-radius: 10px; /* Smooth edges for product list */
+}
+
+/* Light mode adjustments */
+.light-mode {
+  background-color: #EEEEEE; /* Light background for the body */
+  color: #222831; /* Text color for light mode */
+}
+
+.light-mode .sidebar {
+  background-color: #EEEEEE; /* Light background for sidebar */
+  color: #222831; /* Dark text color for sidebar */
+}
+
+.light-mode .product-list {
+  border-radius: 10px; /* Smooth edges for product list */
+  padding: 15px; /* Additional padding for compact design */
 }
