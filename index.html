@@ -3,90 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <title>Serverless Inventory Management System(SIMS)</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="styles.css"> <!-- External CSS integration -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Lato" /> <!-- Google Fonts -->
 </head>
-<body class="dark-mode"> <!-- Default is dark mode -->
-  <header>
-    <h1>Serverless Inventory Management System(SIMS)</h1>
-    <button onclick="toggleDarkMode()">Toggle Dark/Light Mode</button>
-  </header>
-
-  <section>
-    <h2>Add/Edit Product</h2>
-    <form id="product-form" onsubmit="handleProductSubmit(event)">
-       <!-- Hidden field for product ID -->
-      <div class="form-group">
-        <input type="hidden" id="product-id" readonly>
-      </div>
-      <div class="form-group">
-        <input type="hidden" id="created-at" readonly>
-      </div>
-      <!-- Grouped form fields with fixed-width labels and smaller text boxes -->
-      <div class="form-group">
-        <label for="product-name">Name:</label>
-        <input type="text" id="product-name" required>
-      </div>
-      <div class="form-group">
-        <label for="product-description">Description:</label>
-        <input type="text" id="product-description" required>
-      </div>
-      <div class="form-group">
-        <label for="product-price">Price:</label>
-        <input type="number" step="0.01" id="product-price" required>
-      </div>
-      <div class="form-group">
-        <label for="product-stock">Stock:</label>
-        <input type="number" id="product-stock" required>
-      </div>
-      <!-- Save Product button and notification area -->
-      <div class="form-group">
-        <button type="submit">Save Product</button> 
-        <span id="notification"></span> <!-- Notification area for error/success messages -->
-      </div>
-    </form>
-  </section>
-  <section>
-    <h2>Bulk Upload(CSV File Only)</h2>
-    <button onclick="uploadCSV()">Upload CSV</button> <!-- Button to trigger bulk upload -->
-    <input type="file" id="csv-file" accept=".csv"> <!-- File input for CSV upload --> <!-- Only accept CSV files -->
-  </section>
-  <section>
-    <h2>Search Products</h2>
-    <input type="text" id="search-input" placeholder="Search products...">  <!-- Search box -->
-    <input type="number" id="min-price" placeholder="Min price">  <!-- Price range filter -->
-    <input type="number" id="max-price" placeholder="Max price">
-    
-    <button onclick="applyFilters()">Apply Filters</button>  <!-- Apply filters -->
-        <button onclick="clearFilters()">Clear Filters</button>  <!-- Clear filters -->
-
-  </section>
-
-  <section>
-    <h2>Product List</h2>
-    <table id="product-list">
-      <div class="button-container">
-        <button id="prev-page" onclick="loadPreviousPage()">Previous Page</button>
-        <button id="next-page" onclick="loadNextPage()">Next Page</button>
-      </div>
-
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Price</th>
-          <th>Stock</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        
-        <!-- Product rows will be dynamically inserted here -->
-      </tbody>
-    </table>
-
-  </section>
-
-  <script src="scripts.js"></script> <!-- JavaScript code for CRUD operations -->
+<body class="dark-mode">
+  <div class="toggle-switch">
+    <input type="checkbox" id="mode-toggle-checkbox" onchange="toggleDarkMode()">
+    <label for="mode-toggle-checkbox">🌞/🌙</label> <!-- Toggle switch for day/night mode -->
+  </div>
   
+  <div class="main-content"> <!-- Flex layout for sidebar and product-list -->
+    <div class="sidebar"> <!-- Sidebar with defined width -->
+      <section>
+        <h2>Serverless Inventory Management System(SIMS)</h2>
+        <h3>Add/Edit Product</h3>
+        <form id="product-form" onsubmit="handleProductSubmit(event)">
+          <input type="hidden" id="product-id" readonly>
+          <input type="hidden" id="created-at" readonly>
+
+          <!-- Use flex to align labels and inputs -->
+          <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+            <label for="product-name">Name:</label>
+            <input type="text" id="product-name" required>
+          </div>
+
+          <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+            <label for="product-description">Desc:</label>
+            <input type="text" id="product-description" required>
+          </div>
+
+          <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+            <label for="product-price">Price:</label>
+            <input type="number" step="0.01" id="product-price" required>
+          </div>
+
+          <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+            <label for="product-stock">Stock:</label>
+            <input type="number" id="product-stock" required>
+          </div>
+
+          <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+            <button type="submit">Save</button>
+            <span id="notification"></span>
+          </div>
+        </form>
+      </section>
+
+      <section>
+        <h3>Bulk Upload (CSV File Only)</h3>
+        <button onclick="uploadCSV()">Upload CSV</button>
+        <input type="file" id="csv-file" accept=".csv">
+      </section>
+
+      <section>
+        <h3>Search Products</h3>
+        <input type="text" id="search-input" placeholder="Search products...">
+        <input type="number" id="min-price" placeholder="Min price">
+        <input type="number" id="max-price" placeholder="Max price">
+        <button onclick="applyFilters()">Apply Filters</button>
+        <button onclick="clearFilters()">Clear Filters</button>
+      </section>
+    </div> <!-- End of sidebar -->
+
+    <div class="product-list"> <!-- Product list with flexible width -->
+      <section>
+        <h2>Product List</h2>
+        <table id="product-list">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Product rows will be dynamically inserted here -->
+          </tbody>
+        </table>
+      </section>
+    </div> <!-- End of product-list -->
+  </div> <!-- End of main-content -->
+
+  <script src="scripts.js"></script> <!-- JavaScript file -->
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      document.body.classList.toggle("light-mode");
+    }
+  </script> <!-- Inline JavaScript to toggle dark/light mode -->
 </body>
-</html>

@@ -75,19 +75,6 @@ async function createProduct(product) {
   return response.ok; // Returns true if successful, false otherwise
 }
 
-// Function to update an existing product
-// async function updateProduct(productId, product) {
-//   const response = await fetch(`${apiUrl}/products/${productId}`, {
-//     method: "PUT",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(product),
-//   });
-
-//   return response.ok; // Returns true if successful, false otherwise
-// }
-
 // Function to update an existing product with productId included in the body
 async function updateProduct(productId, product) {
     // Include productId in the product object
@@ -290,5 +277,3 @@ async function uploadCSV() {
 
   reader.readAsText(file); // Read the CSV file
 }
-
-
